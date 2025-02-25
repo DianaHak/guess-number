@@ -1,0 +1,180 @@
+@font-face {
+    font-family: over;
+    src: url(game_over.ttf);
+  }
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to right, #6a11cb, #0C2953);
+    background-image: url(bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+}
+
+.game-container {
+    background-color: #fff;
+    color: #333;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+#userNumber {
+    padding: 10px;
+    width: 100%;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 2px solid #0C2953;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#userNumber:focus {
+    border-color: #6a11cb;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #0C2953;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #6a11cb;
+}
+
+#correctNumber {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+#wrongNumber {
+    color: #FD9945;
+}
+#correctNumber{
+    color: #36F475;
+}
+#attemptsLeft {
+    font-size: 1rem;
+    color: #555;
+}
+/* Scaling animation for correct guess */
+@keyframes scaleUp {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.correct-animation {
+    animation: scaleUp 0.5s ease-in-out forwards;
+}
+
+/* Confetti styling */
+.confetti {
+    position: absolute;
+    top: -10px;  /* Start above the top of the screen */
+    width: 10px;
+    height: 10px;
+    background-color: #f39c12;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: confettiFall 5s linear infinite;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(-100px) rotate(0deg); /* Start above the top of the screen */
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);  /* Fall all the way to the bottom */
+    }
+}
+
+/* Add variety to confetti (colors and sizes) */
+.confetti:nth-child(odd) {
+    background-color: #e74c3c;
+}
+
+.confetti:nth-child(even) {
+    background-color: #9b59b6;
+}
+.black-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0;
+    animation: fadeIn 1.5s forwards;  /* Fade in effect */
+}
+
+.game-over-text {
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 10px black;
+    animation: fadeInText 2s ease-in-out;
+    font-family: over, sans-serif;
+}
+
+.retry-button {
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    animation: fadeInButton 2.5s ease-in-out;
+    transition: transform 0.3s ease;
+}
+
+.retry-button:hover {
+    transform: scale(1.1);  /* Grow button on hover */
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeInText {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeInButton {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
